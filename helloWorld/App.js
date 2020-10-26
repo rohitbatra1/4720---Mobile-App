@@ -1,9 +1,68 @@
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Button, Image, TouchableOpacity, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+
+export class TableClass extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tableHead: ['Head', 'Head2', 'Head3', 'Head4'],
+      tableData: [
+        ['1', '2', '3', '4'],
+        ['a', 'b', 'c', 'd'],
+        ['1', '2', '3', '4'],
+        ['a', 'b', 'c', 'd']
+      ]
+    }
+  }
+
+  _alertIndex(index) {
+    Alert.alert(`This is row ${index + 1}`);
+  }
+
+  render() {
+    const state = this.state;
+    const element = (data, index) => (
+      <TouchableOpacity onPress={() => this._alertIndex(index)}>
+        <View style={tableStyles.btn}>
+          <Text style={tableStyles.btnText}>button</Text>
+        </View>
+      </TouchableOpacity>
+    );
+
+    return (
+      <View style={tableStyles.container}>
+        <Table borderStyle={{borderColor: 'transparent'}}>
+          <Row data={state.tableHead} style={tableStyles.head} textStyle={tableStyles.text}/>
+          {
+            state.tableData.map((rowData, index) => (
+              <TableWrapper key={index} style={tableStyles.row}>
+                {
+                  rowData.map((cellData, cellIndex) => (
+                    <Cell key={cellIndex} data={cellIndex === 3 ? element(cellData, index) : cellData} textStyle={tableStyles.text}/>
+                  ))
+                }
+              </TableWrapper>
+            ))
+          }
+        </Table>
+      </View>
+    )
+  }
+}
+
+const tableStyles = StyleSheet.create({
+  container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
+  head: { height: 40, backgroundColor: '#808B97', borderTopStartRadius: 20, borderTopEndRadius: 20},
+  text: { margin: 6 },
+  row: { flexDirection: 'row', backgroundColor: '#D3D3D3' },
+  btn: { width: 58, height: 18, backgroundColor: '#15A4FE',  borderRadius: 5 },
+  btnText: { textAlign: 'center', color: '#fff' }
+});
 
 function HomeScreen({ navigation }) {
   return (
@@ -103,17 +162,17 @@ function HomeScreen({ navigation }) {
 
       <TouchableOpacity onPress={() => {
           /* 1. Navigate to the Course Resources route with params */
-          navigation.navigate('General Calender', {
+          navigation.navigate('General Calendar', {
             itemId: 53,
             otherParam: 'anything you want here',
           });
         }}
-        style={styles.generalCalenderContainer}
+        style={styles.generalCalendarContainer}
         >
 
-          <Image style={styles.calenderImageStyle} source={require('./AppImages/calender.png')} />
+          <Image style={styles.CalendarImageStyle} source={require('./AppImages/calendar.png')} />
 
-        <Text style = {styles.calenderButtonText}>General Calender</Text>
+        <Text style = {styles.CalendarButtonText}>General Calendar</Text>
       </TouchableOpacity>
 
 
@@ -129,16 +188,16 @@ function courseScreen({ navigation }) {
 
       <TouchableOpacity onPress={() => {
           /* 1. Navigate to the Course Resources route with params */
-          navigation.navigate('Course Calender', {
+          navigation.navigate('Course Calendar', {
             itemId: 53,
             otherParam: 'anything you want here',
           });
         }}
-        style={styles.calenderContainer}
+        style={styles.CalendarContainer}
         >
-          <Image style={styles.calenderImageStyle} source={require('./AppImages/calender.png')} />
+          <Image style={styles.CalendarImageStyle} source={require('./AppImages/calendar.png')} />
 
-        <Text style = {styles.calenderButtonText}>Course Calender</Text>
+        <Text style = {styles.CalendarButtonText}>Course Calendar</Text>
       </TouchableOpacity>
 
 
@@ -150,12 +209,12 @@ function courseScreen({ navigation }) {
             otherParam: 'anything you want here',
           });
         }}
-        style={styles.resourcesContainter}
+        style={styles.resourcesContainer}
         >
 
-          <Image style={styles.calenderImageStyle} source={require('./AppImages/resources.png')} />  
+          <Image style={styles.CalendarImageStyle} source={require('./AppImages/resources.png')} />  
        
-        <Text style = {styles.calenderButtonText}>Course Resources</Text>
+        <Text style = {styles.CalendarButtonText}>Course Resources</Text>
       </TouchableOpacity>
 
 
@@ -171,10 +230,10 @@ function courseScreen({ navigation }) {
         >
 
           
-          <Image style={styles.calenderImageStyle} source={require('./AppImages/assignment.png')} /> 
+          <Image style={styles.CalendarImageStyle} source={require('./AppImages/assignment.png')} /> 
           
 
-        <Text style = {styles.calenderButtonText}>View Assignments</Text>
+        <Text style = {styles.CalendarButtonText}>View Assignments</Text>
       </TouchableOpacity>
 
 
@@ -205,9 +264,9 @@ function courseScreen({ navigation }) {
         }}
         style={styles.announcementsContainer}
         >
-          <Image style={styles.calenderImageStyle} source={require('./AppImages/announcement.png')} /> 
+          <Image style={styles.CalendarImageStyle} source={require('./AppImages/announcement.png')} /> 
 
-      <Text style = {styles.calenderButtonText}>Announcements</Text>
+      <Text style = {styles.CalendarButtonText}>Announcements</Text>
       </TouchableOpacity>
 
 
@@ -216,23 +275,23 @@ function courseScreen({ navigation }) {
 }
 
 
-function generalCalenderScreen({ route, navigation }) {
+function generalCalendarScreen({ route, navigation }) {
   /* 2. Get the param */
   const { itemId , otherParam} = route.params;
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>General Calender Screen</Text>
+      <Text>General Calendar Screen</Text>
       <Text>itemId: {JSON.stringify(itemId)}</Text>
       <Text>otherParam: {JSON.stringify(otherParam)}</Text>
 
       <TouchableOpacity onPress={() =>
-          navigation.push('General Calender', {
+          navigation.push('General Calendar', {
             itemId: Math.floor(Math.random() * 100),
           })
         }
         style={styles.appButtonContainer}>
 
-              <Text style = {styles.appButtonText}>Go to General Calender... Again</Text>
+              <Text style = {styles.appButtonText}>Go to General Calendar... Again</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate('Home')}
@@ -250,23 +309,23 @@ function generalCalenderScreen({ route, navigation }) {
   );
 }
 
-function CalenderScreen({ route, navigation }) {
+function CalendarScreen({ route, navigation }) {
   /* 2. Get the param */
   const { itemId , otherParam} = route.params;
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Calender Screen</Text>
+      <Text>Calendar Screen</Text>
       <Text>itemId: {JSON.stringify(itemId)}</Text>
       <Text>otherParam: {JSON.stringify(otherParam)}</Text>
 
       <TouchableOpacity onPress={() =>
-          navigation.push('Course Calender', {
+          navigation.push('Course Calendar', {
             itemId: Math.floor(Math.random() * 100),
           })
         }
         style={styles.appButtonContainer}>
 
-              <Text style = {styles.appButtonText}>Go to Calender... Again</Text>
+              <Text style = {styles.appButtonText}>Go to Calendar... Again</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate('Home')}
@@ -284,78 +343,14 @@ function CalenderScreen({ route, navigation }) {
     </View>
   );
 }
-
-
-function ResourcesScreen({ route, navigation }) {
-  /* 2. Get the param */
-  const { itemId , otherParam} = route.params;
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Course Resources Screen</Text>
-      <Text>itemId: {JSON.stringify(itemId)}</Text>
-      <Text>otherParam: {JSON.stringify(otherParam)}</Text>
-
-
-      <TouchableOpacity onPress={() =>
-          navigation.push('Course Resources', {
-            itemId: Math.floor(Math.random() * 100),
-          })
-        }
-        style={styles.appButtonContainer}
-        >
-
-              <Text style = {styles.appButtonText}>Go to Resources... Again</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}
-       style={styles.appButtonContainer}>
-
-              <Text style = {styles.appButtonText}>Go to Home</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => navigation.goBack()}
-       style={styles.appButtonContainer}>
-
-              <Text style = {styles.appButtonText}>Go back</Text>
-      </TouchableOpacity>
-
-    </View>
-  );
-}
-
 
 function AssignmentsScreen({ route, navigation }) {
   /* 2. Get the param */
   const { itemId , otherParam} = route.params;
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Assignments Screen</Text>
-      <Text>itemId: {JSON.stringify(itemId)}</Text>
-      <Text>otherParam: {JSON.stringify(otherParam)}</Text>
-      
-      <TouchableOpacity onPress={() =>
-          navigation.push('View Assignments', {
-            itemId: Math.floor(Math.random() * 100),
-          })
-        }
-        style={styles.appButtonContainer}>
 
-              <Text style = {styles.appButtonText}>Go to Assignments... Again</Text>
-      </TouchableOpacity>
+    <TableClass />
 
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}
-       style={styles.appButtonContainer}>
-
-              <Text style = {styles.appButtonText}>Go to Home</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => navigation.goBack()}
-       style={styles.appButtonContainer}>
-
-              <Text style = {styles.appButtonText}>Go back</Text>
-      </TouchableOpacity>
-
-    </View>
   );
 }
 
@@ -398,19 +393,133 @@ function AnnouncementsScreen({ route, navigation }) {
   /* 2. Get the param */
   const { itemId , otherParam} = route.params;
   return (
+    
+    <TableClass />
+
+  );
+}
+
+function ResourcesScreen({ route, navigation}) {
+  /* 2. Get the param */
+  const { itemId , otherParam} = route.params;
+  return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Announcements Screen</Text>
+
+      <TouchableOpacity onPress={() => {
+          /* 1. Navigate to the Course Resources route with params */
+          navigation.navigate('Folder', {
+            itemId: 53,
+            otherParam: 'anything you want here',
+          });
+        }}
+        style={[styles.verticalPosition(0), styles.FolderContainer]}
+        >
+          <Image style={styles.ResourcesImageStyle} source={require('./AppImages/folder.png')} />
+
+        <Text style = {styles.CalendarButtonText}>Folder 1</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => {
+          navigation.navigate('Folder', {
+            itemId: 53,
+            otherParam: 'anything you want here',
+          });
+        }}
+        style={[styles.verticalPosition(1), styles.FolderContainer]}
+        >
+
+          <Image style={styles.ResourcesImageStyle} source={require('./AppImages/folder.png')} />  
+       
+        <Text style = {styles.CalendarButtonText}>Folder 2</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => {
+          navigation.navigate('Folder', {
+            itemId: 53,
+            otherParam: 'anything you want here',
+          });
+        }}
+        style={[styles.verticalPosition(2), styles.FolderContainer]}
+        >
+
+          
+          <Image style={styles.ResourcesImageStyle} source={require('./AppImages/folder.png')} /> 
+          
+
+        <Text style = {styles.CalendarButtonText}>Folder 3</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => {
+          navigation.navigate('File', {
+            itemId: 53,
+            otherParam: 'anything you want here',
+          });
+        }}
+        style={[styles.verticalPosition(3), styles.FolderContainer]}
+        >
+
+          
+          <Image style={styles.FileImageStyle} source={require('./AppImages/file.png')} /> 
+          
+
+        <Text style = {styles.CalendarButtonText}>File 1</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => {
+          navigation.navigate('Folder', {
+            itemId: 53,
+            otherParam: 'anything you want here',
+          });
+        }}
+        style={[styles.verticalPosition(4), styles.FolderContainer]}
+        >
+
+          
+          <Image style={styles.FileImageStyle} source={require('./AppImages/file.png')} /> 
+          
+
+        <Text style = {styles.CalendarButtonText}>File 2</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => {
+          navigation.navigate('Folder', {
+            itemId: 53,
+            otherParam: 'anything you want here',
+          });
+        }}
+        style={[styles.verticalPosition(5), styles.FolderContainer]}
+        >
+
+          
+          <Image style={styles.FileImageStyle} source={require('./AppImages/file.png')} /> 
+          
+
+        <Text style = {styles.CalendarButtonText}>File 3</Text>
+      </TouchableOpacity>
+
+    </View>
+  );
+}
+
+function FolderScreen({ route, navigation}) {
+/* 2. Get the param */
+  const { itemId , otherParam} = route.params;
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Course Resources Screen</Text>
       <Text>itemId: {JSON.stringify(itemId)}</Text>
       <Text>otherParam: {JSON.stringify(otherParam)}</Text>
 
+
       <TouchableOpacity onPress={() =>
-          navigation.push('Announcements', {
+          navigation.push('Course Resources', {
             itemId: Math.floor(Math.random() * 100),
           })
         }
-        style={styles.appButtonContainer}>
+        style={styles.appButtonContainer}
+        >
 
-              <Text style = {styles.appButtonText}>Go to Announcements... Again</Text>
+              <Text style = {styles.appButtonText}>Go to Resources... Again</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate('Home')}
@@ -424,6 +533,7 @@ function AnnouncementsScreen({ route, navigation }) {
 
               <Text style = {styles.appButtonText}>Go back</Text>
       </TouchableOpacity>
+
     </View>
   );
 }
@@ -440,11 +550,11 @@ function App() {
           options={{ title: 'Overview' }}
         />
 
-        <Stack.Screen name="General Calender" component={generalCalenderScreen} />
+        <Stack.Screen name="General Calendar" component={generalCalendarScreen} />
 
         <Stack.Screen name="Course Page" component={courseScreen} />
 
-        <Stack.Screen name="Course Calender" component={CalenderScreen} />
+        <Stack.Screen name="Course Calendar" component={CalendarScreen} />
 
         <Stack.Screen name="Course Resources" component={ResourcesScreen} />
 
@@ -453,7 +563,10 @@ function App() {
         <Stack.Screen name="Syllabus" component={SyllabusScreen} />
 
         <Stack.Screen name="Announcements" component={AnnouncementsScreen} />
+      
+        <Stack.Screen name="Resources" component={ResourcesScreen} />
         
+        <Stack.Screen name="Folder" component={FolderScreen} />
 
       </Stack.Navigator>
     </NavigationContainer>
@@ -461,7 +574,15 @@ function App() {
 }
 
 
+
 const styles = StyleSheet.create({
+
+  verticalPosition: function(place) {
+    return {
+      top: 10+(100 * place)
+    }
+  },
+
   // ...
   imageStyle: {
     height: 100,
@@ -469,11 +590,27 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignSelf: 'center',
   },
-  calenderImageStyle: {height: 100,
+  CalendarImageStyle: {
+    height: 100,
     width: 100,
     position: 'absolute',
     left: '3%',
     bottom: '15%',
+    // alignSelf: 'flex-start',
+  },
+  ResourcesImageStyle: {
+    height: 80,
+    width: 80,
+    position: 'relative',
+    bottom: '25%',
+    // alignSelf: 'flex-start',
+  },
+  FileImageStyle: {
+    height: 50,
+    width: 50,
+    position: 'relative',
+    top: "10%",
+    left: '5%',
     // alignSelf: 'flex-start',
   },
 
@@ -556,7 +693,7 @@ const styles = StyleSheet.create({
     right: 25,
   },
 
-  generalCalenderContainer: {
+  generalCalendarContainer: {
     elevation: 8,
     backgroundColor: "#D3D3D3",
     margin: 10,
@@ -569,7 +706,7 @@ const styles = StyleSheet.create({
     top:450,
   },
 
-  calenderContainer: {
+  CalendarContainer: {
     elevation: 8,
     backgroundColor: "#D3D3D3",
     margin: 10,
@@ -581,7 +718,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top:0,
   },
-  resourcesContainter: {
+  resourcesContainer: {
     elevation: 8,
     backgroundColor: "#D3D3D3",
     margin: 10,
@@ -654,7 +791,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: '10%',
   },
-  calenderButtonText: {
+  CalendarButtonText: {
     fontSize: 18,
     color: "#15A4FE",
     fontWeight: "bold",
@@ -663,6 +800,29 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: '10%',
     bottom: '50%',
+  },
+
+  ResourcesButtonText: {
+    fontSize: 18,
+    color: "#15A4FE",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase",
+    position: 'absolute',
+    right: '10%',
+    bottom: '50%',
+  },
+
+  FolderContainer: {
+    elevation: 8,
+    backgroundColor: "#D3D3D3",
+    margin: 10,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    height: 75,
+    width: 300,
+    position: 'absolute',
   }
 
 });
