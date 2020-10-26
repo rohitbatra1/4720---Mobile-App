@@ -126,7 +126,6 @@ function HomeScreen({ navigation }) {
 function courseScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Course Screen</Text>
 
       <TouchableOpacity onPress={() => {
           /* 1. Navigate to the Course Resources route with params */
