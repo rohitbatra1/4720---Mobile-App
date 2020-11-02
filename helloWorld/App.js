@@ -4,7 +4,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import {AnnouncementsScreen, AssignmentsScreen, CalendarScreen,
-  courseScreen, FolderScreen, generalCalendarScreen, HomeScreen, LoginScreen, ResourcesScreen, SyllabusScreen} from './componentIndex.js';
+  courseScreen, FolderScreen, generalCalendarScreen, HomeScreen, LoginScreen, ResourcesScreen, SyllabusScreen, WebScreen} from './componentIndex.js';
 
 const Stack = createStackNavigator();
 
@@ -40,6 +40,8 @@ function App() {
         <Stack.Screen name="Resources" component={ResourcesScreen} />
         
         <Stack.Screen name="Folder" component={FolderScreen} />
+
+        <Stack.Screen name="Web" component={WebScreen} />
 
       </Stack.Navigator>
     </NavigationContainer>
