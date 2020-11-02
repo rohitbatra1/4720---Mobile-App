@@ -8,6 +8,7 @@ import HomeScreen from './components/Home.js';
 import LoginScreen from './components/Login.js';
 import ResourcesScreen from './components/Resources.js';
 import SyllabusScreen from './components/Syllabus.js';
+import WebScreen from './components/Web.js';
 
 export {AnnouncementsScreen, AssignmentsScreen, CalendarScreen,
-   courseScreen, FolderScreen, generalCalendarScreen, HomeScreen, LoginScreen, ResourcesScreen, SyllabusScreen };
+   courseScreen, FolderScreen, generalCalendarScreen, HomeScreen, LoginScreen, ResourcesScreen, SyllabusScreen, WebScreen };
