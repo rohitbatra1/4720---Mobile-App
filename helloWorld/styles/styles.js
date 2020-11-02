@@ -192,18 +192,18 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12,
-    height: 75,
-    width: 300,
+    height: 50,
+    width: 200,
     position: 'absolute',
    },
 
    LoginText: {
-    fontSize: 30,
+    fontSize: 25,
     color: "#FFFAF0",
     fontWeight: "bold",
     textTransform: "uppercase",
     position: 'absolute',
-    bottom: '45%',
+    bottom: '40%',
   },
 
   LogoImageStyle: {
