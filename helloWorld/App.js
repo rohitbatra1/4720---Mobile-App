@@ -4,20 +4,25 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import {AnnouncementsScreen, AssignmentsScreen, CalendarScreen,
-  courseScreen, FolderScreen, generalCalendarScreen, HomeScreen, ResourcesScreen, SyllabusScreen} from './componentIndex.js';
+  courseScreen, FolderScreen, generalCalendarScreen, HomeScreen, LoginScreen, ResourcesScreen, SyllabusScreen} from './componentIndex.js';
 
 const Stack = createStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ title: 'Login' }}
+        />
         <Stack.Screen
           name="Home"
           component={HomeScreen}
           options={{ title: 'Overview' }}
         />
-
+ 
         <Stack.Screen name="General Calendar" component={generalCalendarScreen} />
 
         <Stack.Screen name="Course Page" component={courseScreen} />

@@ -168,6 +168,10 @@ const styles = StyleSheet.create({
      right: '10%',
      bottom: '50%'
    },
+
+   middleText: {
+    alignSelf: "center"
+   },
  
    FolderContainer: {
      elevation: 8,
@@ -179,7 +183,33 @@ const styles = StyleSheet.create({
      height: 75,
      width: 300,
      position: 'absolute',
-   }
+   },
+
+   LoginContainer: {
+    elevation: 8,
+    backgroundColor: "#1E90FF",
+    margin: 10,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    height: 75,
+    width: 300,
+    position: 'absolute',
+   },
+
+   LoginText: {
+    fontSize: 30,
+    color: "#FFFAF0",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    position: 'absolute',
+    bottom: '45%',
+  },
+
+  LogoImageStyle: {
+    position: 'absolute',
+    top: '15%',
+  }
  
  });
 
