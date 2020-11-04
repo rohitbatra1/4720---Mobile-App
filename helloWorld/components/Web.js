@@ -8,6 +8,7 @@ import { WebView } from 'react-native-webview';
 
 import {styles} from '../index.js';
 
+
 function WebScreen({ navigation }) {
  
   var webview = null;
@@ -26,7 +27,7 @@ function WebScreen({ navigation }) {
     if (!url) return;
 
     // redirect somewhere else
-    if (url.includes('SAML2')) {
+    if (url.includes('https://collab.its.virginia.edu/portal')) {
       // const newURL = 'https://logrocket.com/';
       // const redirectTo = 'window.location = "' + newURL + '"';
       // webview.injectJavaScript(redirectTo);
@@ -37,14 +38,20 @@ function WebScreen({ navigation }) {
       })
     }
   };
+
   
 
    return (
         <WebView
             ref={ref => (webview = ref)}
             originWhitelist={['*']}
-            source={{ uri: 'https://collab.its.virginia.edu/portal' }}
+            source={{ uri: 'https://collab.its.virginia.edu/portal/login?containerLogin=true' }}
             onNavigationStateChange={handleWebViewNavigationStateChange}
+            injectedJavaScript={'window.ReactNativeWebView.postMessage(String(document.getElementsByName("eventSubmit_doView")[0].value));'}
+            onMessage={(event) => {
+              console.log(event.nativeEvent.data);
+              alert(event.nativeEvent.data);
+            }}
         />
 
         
