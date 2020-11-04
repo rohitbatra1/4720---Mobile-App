@@ -18,6 +18,17 @@ function FolderScreen({ route, navigation}) {
         {name: 'File Name', type: 'File', id: 4},
         {name: 'File Name', type: 'File', id: 5},
       ]
+      var images = {
+        File: {
+          path: require('./AppImages/file.png'),
+          style: styles.FileImageStyle
+        },
+        Folder: {
+          path: require('./AppImages/folder.png'),
+          style: styles.ResourcesImageStyle
+        }
+      }
+
       
       var resourcesMap = resources.map(resourcesInfo => 
       <TouchableOpacity onPress={() => {
@@ -28,7 +39,8 @@ function FolderScreen({ route, navigation}) {
         }}
         style={[styles.verticalPosition(resourcesInfo.id), styles.FolderContainer]}
         >
-          <Image style={styles.ResourcesImageStyle} source={require('./AppImages/folder.png')} />
+          
+          <Image style={images[resourcesInfo.type].style} source={images[resourcesInfo.type].path} />
     
         <Text style = {[styles.buttonText, styles.bottom]}>{resourcesInfo.name}</Text>
       </TouchableOpacity>)
