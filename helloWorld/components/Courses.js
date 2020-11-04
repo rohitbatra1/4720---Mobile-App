@@ -75,7 +75,7 @@ function courseScreen({ navigation }) {
         >
           <Image style={styles.imageStyle} source={require('./AppImages/syllabus.png')} /> 
 
-        <Text style = {styles.buttonText}>Syllabus</Text>
+        <Text style = {[styles.syllabusbuttonText, styles.bottom]}>Syllabus</Text>
       </TouchableOpacity>
 
 
@@ -90,9 +90,9 @@ function courseScreen({ navigation }) {
         }}
         style={styles.announcementsContainer}
         >
-          <Image style={styles.CalendarImageStyle} source={require('./AppImages/announcement.png')} /> 
+          <Image style={styles.AnnouncementImageStyle} source={require('./AppImages/announcement.png')} /> 
 
-      <Text style = {[styles.buttonText, styles.bottom]}>Announcements</Text>
+      <Text style = {[styles.announcementsbuttonText, styles.bottom]}>Announcements</Text>
       </TouchableOpacity>
 
 

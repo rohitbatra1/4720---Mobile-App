@@ -3,16 +3,16 @@ import React, { Component } from 'react';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 
-class TableClass extends Component {
+class TableClassAnnouncements extends Component {
    constructor(props) {
      super(props);
      this.state = {
-       tableHead: ['Head', 'Head2', 'Head3', 'Head4'],
+       tableHead: ['Title', 'Date'],
        tableData: [
-         ['1', '2', '3', '4'],
-         ['a', 'b', 'c', 'd'],
-         ['1', '2', '3', '4'],
-         ['a', 'b', 'c', 'd']
+         ['Welcome!', 'Oct 14, 2020 3:00 pm'],
+         ['PA 2 Due', 'Oct 18, 2020 3:00 pm'],
+         ['PA 3 Due', 'Oct 21, 2020 3:00 pm'],
+         ['PA 4 Due', 'Oct 29, 2020 3:00 pm']
        ]
      }
    }
@@ -40,7 +40,7 @@ class TableClass extends Component {
                <TableWrapper key={index} style={tableStyles.row}>
                  {
                    rowData.map((cellData, cellIndex) => (
-                     <Cell key={cellIndex} data={cellIndex === 3 ? element(cellData, index) : cellData} textStyle={tableStyles.text}/>
+                     <Cell key={cellIndex} data={cellData} textStyle={tableStyles.text}/>
                    ))
                  }
                </TableWrapper>
@@ -55,10 +55,10 @@ class TableClass extends Component {
  const tableStyles = StyleSheet.create({
    container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
    head: { height: 40, backgroundColor: '#808B97', borderTopStartRadius: 20, borderTopEndRadius: 20},
-   text: { margin: 6 },
-   row: { flexDirection: 'row', backgroundColor: '#D3D3D3' },
+   text: { margin: 6,  fontFamily: "Roboto" },
+   row: { flexDirection: 'row', backgroundColor: '#D3D3D3', },
    btn: { width: 58, height: 18, backgroundColor: '#15A4FE',  borderRadius: 5 },
    btnText: { textAlign: 'center', color: '#fff' }
  });
  
- export default TableClass;
+ export default TableClassAnnouncements;

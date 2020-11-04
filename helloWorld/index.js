@@ -1,4 +1,5 @@
 import styles from './styles/styles.js';
-import TableClass from './styles/TableClass';
+import TableClassAssignments from './styles/TableClassAssignments';
+import TableClassAnnouncements from './styles/TableClassAnnouncements';
 
-export { styles, TableClass};
+export { styles, TableClassAssignments, TableClassAnnouncements};
