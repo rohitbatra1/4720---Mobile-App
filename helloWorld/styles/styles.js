@@ -36,6 +36,14 @@ const styles = StyleSheet.create({
      bottom: '15%',
      // alignSelf: 'flex-start',
    },
+   AnnouncementImageStyle: {
+    height: 75,
+    width: 75,
+    position: 'absolute',
+    left: '35%',
+    bottom: '30%',
+    // alignSelf: 'flex-start',
+  },
    ResourcesImageStyle: {
      height: 80,
      width: 80,
@@ -161,15 +169,38 @@ const styles = StyleSheet.create({
      alignSelf: "center",
      textTransform: "uppercase",
      position: 'absolute',
-     bottom: '10%',
+     bottom: '40%',
+     left: '40%'
    },
+   
+   syllabusbuttonText: {
+    fontSize: 16,
+    color: "#15A4FE",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase",
+    position: 'absolute',
+    bottom: '6%',
+    left: '30%'
+  },
+
+  announcementsbuttonText: {
+    fontSize: 14,
+    color: "#15A4FE",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase",
+    position: 'absolute',
+    bottom: '10%',
+    left: '20%'
+  },
  
-   bottomText: {
+  bottomText: {
      right: '10%',
      bottom: '50%'
    },
 
-   middleText: {
+  middleText: {
     alignSelf: "center"
    },
  
