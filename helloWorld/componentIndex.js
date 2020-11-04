@@ -10,6 +10,7 @@ import ResourcesScreen from './components/Resources.js';
 import SyllabusScreen from './components/Syllabus.js';
 import WebScreen from './components/Web.js';
 import AgendaScreen from './components/Agenda.js';
+import FileScreen from './components/File.js';
 
 export {AnnouncementsScreen, AssignmentsScreen, CalendarScreen,
-   courseScreen, FolderScreen, generalCalendarScreen, HomeScreen, LoginScreen, ResourcesScreen, SyllabusScreen, WebScreen, AgendaScreen };
+   courseScreen, FileScreen, FolderScreen, generalCalendarScreen, HomeScreen, LoginScreen, ResourcesScreen, SyllabusScreen, WebScreen, AgendaScreen };
