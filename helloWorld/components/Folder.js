@@ -9,39 +9,37 @@ import {styles} from '../index.js';
 
 function FolderScreen({ route, navigation}) {
    /* 2. Get the param */
-     const { itemId , otherParam} = route.params;
-     return (
-       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-         <Text>Course Resources Screen</Text>
-         <Text>itemId: {JSON.stringify(itemId)}</Text>
-         <Text>otherParam: {JSON.stringify(otherParam)}</Text>
-   
-   
-         <TouchableOpacity onPress={() =>
-             navigation.push('Course Resources', {
-               itemId: Math.floor(Math.random() * 100),
-             })
-           }
-           style={styles.appButtonContainer}
-           >
-   
-                 <Text style = {styles.buttonText}>Go to Resources... Again</Text>
-         </TouchableOpacity>
-   
-         <TouchableOpacity onPress={() => navigation.navigate('Home')}
-          style={styles.appButtonContainer}>
-   
-                 <Text style = {styles.buttonText}>Go to Home</Text>
-         </TouchableOpacity>
-   
-         <TouchableOpacity onPress={() => navigation.goBack()}
-          style={styles.appButtonContainer}>
-   
-                 <Text style = {styles.buttonText}>Go back</Text>
-         </TouchableOpacity>
-   
-       </View>
-     );
+      const { itemId , otherParam} = route.params;
+      var resources = [
+        {name: 'Folder Name', type: 'Folder', id: 0}, 
+        {name: 'Folder Name', type: 'Folder', id: 1},
+        {name: 'Folder Name', type: 'Folder', id: 2}, 
+        {name: 'File Name', type: 'File', id: 3},
+        {name: 'File Name', type: 'File', id: 4},
+        {name: 'File Name', type: 'File', id: 5},
+      ]
+      
+      var resourcesMap = resources.map(resourcesInfo => 
+      <TouchableOpacity onPress={() => {
+          navigation.navigate(resourcesInfo.type, {
+            itemId: 53,
+            otherParam: 'anything you want here',
+          });
+        }}
+        style={[styles.verticalPosition(resourcesInfo.id), styles.FolderContainer]}
+        >
+          <Image style={styles.ResourcesImageStyle} source={require('./AppImages/folder.png')} />
+    
+        <Text style = {[styles.buttonText, styles.bottom]}>{resourcesInfo.name}</Text>
+      </TouchableOpacity>)
+    
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    
+          {resourcesMap}
+    
+        </View>
+      );
    }
 
    export default FolderScreen;
