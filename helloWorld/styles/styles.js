@@ -172,6 +172,17 @@ const styles = StyleSheet.create({
      bottom: '40%',
      left: '40%'
    },
+
+  coursebuttonText: {
+    fontSize: 18,
+    color: "#15A4FE",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase",
+    position: 'absolute',
+    bottom: '20%',
+    left: '30%'
+  },
    
    syllabusbuttonText: {
     fontSize: 16,

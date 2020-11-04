@@ -32,7 +32,7 @@ function HomeScreen({ navigation }) {
        <Image style={styles.imageStyle} source={require('./AppImages/book.png')} />
  
  
-     <Text style = {styles.buttonText}>{courseInfo.name}</Text>
+     <Text style = {styles.coursebuttonText}>{courseInfo.name}</Text>
    </TouchableOpacity>
    )
  
