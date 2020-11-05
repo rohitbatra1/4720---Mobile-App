@@ -25,7 +25,7 @@ function ResourcesScreen({ route, navigation}) {
     },
     Folder: {
       path: require('./AppImages/folder.png'),
-      style: styles.ResourcesImageStyle
+      style: styles.FolderImageStyle
     }
   }
    
