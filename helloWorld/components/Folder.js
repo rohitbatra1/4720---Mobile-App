@@ -25,7 +25,7 @@ function FolderScreen({ route, navigation}) {
         },
         Folder: {
           path: require('./AppImages/folder.png'),
-          style: styles.ResourcesImageStyle
+          style: styles.FolderImageStyle
         }
       }
 
@@ -37,6 +37,7 @@ function FolderScreen({ route, navigation}) {
             otherParam: 'anything you want here',
           });
         }}
+        key = {Math.random()}
         style={[styles.verticalPosition(resourcesInfo.id), styles.FolderContainer]}
         >
           

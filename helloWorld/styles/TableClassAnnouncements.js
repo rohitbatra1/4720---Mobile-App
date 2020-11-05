@@ -55,7 +55,7 @@ class TableClassAnnouncements extends Component {
  const tableStyles = StyleSheet.create({
    container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
    head: { height: 40, backgroundColor: '#808B97', borderTopStartRadius: 20, borderTopEndRadius: 20},
-   text: { margin: 6,  fontFamily: "Roboto" },
+   text: { margin: 6, },
    row: { flexDirection: 'row', backgroundColor: '#D3D3D3', },
    btn: { width: 58, height: 18, backgroundColor: '#15A4FE',  borderRadius: 5 },
    btnText: { textAlign: 'center', color: '#fff' }
