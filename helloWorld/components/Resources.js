@@ -36,6 +36,7 @@ function ResourcesScreen({ route, navigation}) {
          otherParam: 'anything you want here',
        });
      }}
+     key = {Math.random()}
      style={[styles.verticalPosition(resourcesInfo.id), styles.FolderContainer]}
      >
         <Image style={images[resourcesInfo.type].style} source={images[resourcesInfo.type].path} />
