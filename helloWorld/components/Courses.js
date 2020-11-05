@@ -73,7 +73,7 @@ function courseScreen({ navigation }) {
         }}
         style={styles.syllabusContainer}
         >
-          <Image style={styles.imageStyle} source={require('./AppImages/syllabus.png')} /> 
+          <Image style={styles.syllabusimageStyle} source={require('./AppImages/syllabus.png')} /> 
 
         <Text style = {[styles.syllabusbuttonText, styles.bottom]}>Syllabus</Text>
       </TouchableOpacity>
