@@ -1,30 +1,32 @@
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import React, { Component } from 'react';
-import { Image, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { Image, StyleSheet, Dimensions, TouchableOpacity, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 
-const styles = StyleSheet.create({
 
+const styles = StyleSheet.create({
+  
    verticalPosition: function(place) {
      return {
-       top: 10+(100 * place)
+       top:  Dimensions.get('window').height * 0.02 + (Dimensions.get('window').height * 0.13 * place),
      }
    },
    
+   
    coursePosition: function(place, isLeft) {
      return {
-       top: 10+(150 * place),
-       left: isLeft ? 25: null,
-       right: isLeft ? null: 25
+       top: Dimensions.get('window').height * 0.02 +(Dimensions.get('window').height * 0.195 * place),
+       left: isLeft ? '7%': null,
+       right: isLeft ? null: '7%'
      }
    },
  
    // ...
    imageStyle: {
-     height: 100,
-     width: 100,
+     height: '85%',
+     width: '85%',
      position: 'absolute',
      alignSelf: 'center',
    },
@@ -45,10 +47,11 @@ const styles = StyleSheet.create({
     // alignSelf: 'flex-start',
   },
    ResourcesImageStyle: {
-     height: 80,
-     width: 80,
-     position: 'relative',
-     bottom: '25%',
+      height: 100,
+      width: 100,
+      position: 'absolute',
+      left: '3%',
+      bottom: '15%',
      // alignSelf: 'flex-start',
    },
    FileImageStyle: {
@@ -59,107 +62,105 @@ const styles = StyleSheet.create({
      left: '5%',
      // alignSelf: 'flex-start',
    },
+   
+   FolderImageStyle: {
+    height: 70,
+    width: 70,
+    position: 'relative',
+    top: "1%",
+    left: '4%',
+    // alignSelf: 'flex-start',
+  },
  
    course: {
      elevation: 8,
      backgroundColor: "#D3D3D3",
-     margin: 10,
+     margin: '1%',
      borderRadius: 10,
-     paddingVertical: 10,
-     paddingHorizontal: 12,
-     height: 125,
-     width: 150,
+     paddingVertical: '5%',
+     paddingHorizontal: '6%',
+     height: '18%',
+     width: '38%',
      position: 'absolute',
    },
    
    generalCalendarContainer: {
      elevation: 8,
      backgroundColor: "#D3D3D3",
-     margin: 10,
+     margin: '5%',
      borderRadius: 10,
      paddingVertical: 10,
      paddingHorizontal: 12,
-     height: 125,
-     width: 325,
+     height: '18%',
+     width: '85%',
      position: 'absolute',
-     top:450,
+     top:'67%',
    },
  
    CalendarContainer: {
      elevation: 8,
      backgroundColor: "#D3D3D3",
-     margin: 10,
+     margin: '3%',
      borderRadius: 10,
      paddingVertical: 10,
      paddingHorizontal: 12,
-     height: 125,
-     width: 300,
+     height: '18%',
+     width: '85%',
      position: 'absolute',
-     top:0,
+     top: '1%',
    },
    resourcesContainer: {
      elevation: 8,
      backgroundColor: "#D3D3D3",
-     margin: 10,
+     margin: '3%',
      borderRadius: 10,
      paddingVertical: 10,
      paddingHorizontal: 12,
-     height: 125,
-     width: 300,
+     height: '18%',
+     width: '85%',
      position: 'absolute',
-     top:150,
+     top:'23%',
    },
  
    assignmentsContainer: {
      elevation: 8,
      backgroundColor: "#D3D3D3",
-     margin: 10,
+     margin: '3%',
      borderRadius: 10,
      paddingVertical: 10,
      paddingHorizontal: 12,
-     height: 125,
-     width: 300,
+     height: '18%',
+     width: '85%',
      position: 'absolute',
-     top:300,
+     top:'45%',
    },
  
    syllabusContainer: {
      elevation: 8,
      backgroundColor: "#D3D3D3",
-     margin: 10,
+     margin: '1%',
      borderRadius: 10,
      paddingVertical: 10,
      paddingHorizontal: 12,
-     height: 125,
-     width: 125,
+     height: '18%',
+     width: '33%',
      position: 'absolute',
-     top:450,
-     left: 30,
+     top:'67%',
+     left: '7%',
    },
  
    announcementsContainer: {
      elevation: 8,
      backgroundColor: "#D3D3D3",
-     margin: 10,
+     margin: '1%',
      borderRadius: 10,
      paddingVertical: 10,
      paddingHorizontal: 12,
-     height: 125,
-     width: 170,
+     height: '18%',
+     width: '43%',
      position: 'absolute',
-     top:450,
-     right: 30,
-   },
- 
-   appButtonContainer: {
-     elevation: 8,
-     backgroundColor: "#D3D3D3",
-     margin: 10,
-     borderRadius: 10,
-     paddingVertical: 10,
-     paddingHorizontal: 12,
-     height: 100,
-     width: 100,
+     top:'67%',
+     right: '7%',
    },
    
    buttonText: {
@@ -218,12 +219,12 @@ const styles = StyleSheet.create({
    FolderContainer: {
      elevation: 8,
      backgroundColor: "#D3D3D3",
-     margin: 10,
+     margin: '3%',
      borderRadius: 10,
      paddingVertical: 10,
      paddingHorizontal: 12,
-     height: 75,
-     width: 300,
+     height: '11%',
+     width: '85%',
      position: 'absolute',
    },
 
