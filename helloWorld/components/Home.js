@@ -26,6 +26,7 @@ function HomeScreen({ navigation }) {
          otherParam: 'anything you want here',
        });
      }}
+     key = {courseInfo.id}
      style={[styles.course,styles.coursePosition(Math.floor(courseInfo.id/2), courseInfo.id%2 == 0)]}
      >
        
