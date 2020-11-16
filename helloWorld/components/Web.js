@@ -6,6 +6,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { WebView } from 'react-native-webview';
 
 
+
+
 import {styles} from '../index.js';
 
 
@@ -28,30 +30,55 @@ function WebScreen({ navigation }) {
 
     // redirect somewhere else
     if (url.includes('https://collab.its.virginia.edu/portal')) {
-      // const newURL = 'https://logrocket.com/';
-      // const redirectTo = 'window.location = "' + newURL + '"';
-      // webview.injectJavaScript(redirectTo);
+      const newURL = 'https://collab.its.virginia.edu/direct/calendar/my.json';
+      const redirectTo = 'window.location = "' + newURL + '"';
+      webview.injectJavaScript(redirectTo);
       
-      navigation.navigate('Home', {
-        itemId: 53,
-        otherParam: 'anything you want here',
-      })
+
+      
+
+      // const fetchAndLog = async () => {
+
+      //   // await CookieManager.clearAll()
+
+      //   const cookie = {'JSESSIONID':'2fd53c58-4fd9-4b43-beb6-33b813eceae9.collab-prod-blue.8.ut0wt3v5ejosma6db32mlegug'}
+
+      //   const response = await fetch('https://collab.its.virginia.edu/direct/calendar/my.json', {
+
+      //     method: "GET",
+
+      //     credentials: "include",
+          
+
+          
+      //   });
+
+      //   const json = await response.json();
+      //   // just log ‘json’
+      //   console.log(json["calendar_collection"]);
+      // }
+    
+      // fetchAndLog();
+
+      // navigation.navigate('Home', {
+      //   itemId: 53,
+      //   otherParam: 'anything you want here',
+      // })
     }
   };
 
   
-
    return (
         <WebView
             ref={ref => (webview = ref)}
             originWhitelist={['*']}
             source={{ uri: 'https://collab.its.virginia.edu/portal/login?containerLogin=true' }}
             onNavigationStateChange={handleWebViewNavigationStateChange}
-            injectedJavaScript={'window.ReactNativeWebView.postMessage(String(document.getElementsByName("eventSubmit_doView")[0].value));'}
-            onMessage={(event) => {
-              console.log(event.nativeEvent.data);
-              alert(event.nativeEvent.data);
-            }}
+            // injectedJavaScript={'window.ReactNativeWebView.postMessage(fetch("https://collab.its.virginia.edu/direct/calendar/my.json"));'}
+            // onMessage={(event) => {
+            //   console.log(event.nativeEvent.data);
+            //   alert(event.nativeEvent.data);
+            // }}
         />
 
         
