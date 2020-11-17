@@ -7,16 +7,26 @@ import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 
 import {styles} from '../index.js';
 
+import {courseIDs, collabData} from '../components/Web.js'
+
 function HomeScreen({ navigation }) {
 
-   var courses = [
-     {name: 'MATH1100', id: 0}, 
-     {name: 'PHYS1010', id: 1},
-     {name: 'CS2150', id: 2}, 
-     {name: 'CS4720', id: 3},
-     {name: 'CS3240', id: 4},
-     {name: 'Course 6', id: 5},
-   ]
+    console.log(courseIDs);
+
+    var courses = [
+    ]
+
+    var i = 0;
+    function insertToCoursesArr(value, key, map) {
+      if (i < 6){
+        courses.push({name: `${key}`, id: i})
+        i += 1;
+      }
+      // console.log(`${key}`)
+    }
+
+    courseIDs.forEach(insertToCoursesArr)
+
    
    var courseMap = courses.map(courseInfo =>
      <TouchableOpacity onPress={() => {
