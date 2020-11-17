@@ -10,14 +10,17 @@ import { WebView } from 'react-native-webview';
 
 import {styles} from '../index.js';
 
+let collabData = new Map()
+
+let courseIDs = new Map()
 
 function WebScreen({ navigation }) {
  
   var webview = null;
 
-  let collabData = new Map()
+  // let collabData = new Map()
 
-  let courseIDs = new Map()
+  // let courseIDs = new Map()
   
   var handleWebViewNavigationStateChange = newNavState => {
     // newNavState looks something like this:
@@ -75,8 +78,8 @@ function WebScreen({ navigation }) {
 
 
       setTimeout(function () {
-        console.log(courseIDs);
-        console.log(collabData);
+        // console.log(courseIDs);
+        // console.log(collabData);
 
         navigation.navigate('Home', {
           itemId: 53,
@@ -140,9 +143,11 @@ function WebScreen({ navigation }) {
             }
           }
         />
-
-        
+  
    );
  }
 
+ export {courseIDs, collabData};
+
  export default WebScreen;
+ 
