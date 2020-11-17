@@ -14,6 +14,8 @@ import {styles} from '../index.js';
 function WebScreen({ navigation }) {
  
   var webview = null;
+
+  let collabData = new Map()
   
   var handleWebViewNavigationStateChange = newNavState => {
     // newNavState looks something like this:
@@ -31,8 +33,8 @@ function WebScreen({ navigation }) {
     // redirect somewhere else
     if (url.includes('https://collab.its.virginia.edu/portal')) {
 
-      const newURL = 'https://collab.its.virginia.edu/direct/calendar/my.json';
-      const redirectTo = 'window.location = "' + newURL + '"';
+      let newURL = 'https://collab.its.virginia.edu/direct/calendar/my.json';
+      let redirectTo = 'window.location = "' + newURL + '"';
       webview.injectJavaScript(redirectTo);
       
 
@@ -42,16 +44,29 @@ function WebScreen({ navigation }) {
         webview.injectJavaScript(jsCode)
       }, 5000);
 
-      // const jsCode = "window.ReactNativeWebView.postMessage(document.documentElement.innerHTML)"
+      setTimeout(function () {
+        newURL = 'https://collab.its.virginia.edu/direct/assignment/my.json';
+        redirectTo = 'window.location = "' + newURL + '"';
+        webview.injectJavaScript(redirectTo);
+      }, 10000);
 
 
-      // webview.injectJavaScript(jsCode)
+      setTimeout(function () {
+        const jsCode = "window.ReactNativeWebView.postMessage(document.documentElement.innerHTML)"
+        webview.injectJavaScript(jsCode)
+      }, 15000);
 
 
+      setTimeout(function () {
+        console.log(collabData)
+      }, 20000);
+
+      
       // navigation.navigate('Home', {
       //   itemId: 53,
       //   otherParam: 'anything you want here',
       // })
+
     }
   };
 
@@ -64,7 +79,14 @@ function WebScreen({ navigation }) {
             onNavigationStateChange={handleWebViewNavigationStateChange}
             // injectedJavaScript={'window.ReactNativeWebView.postMessage(fetch("https://collab.its.virginia.edu/direct/calendar/my.json"));'}
             onMessage={(event) => {
-              console.log(event.nativeEvent.data)
+              if (event.nativeEvent.url.includes('calendar/my.json')){
+                collabData.set('Calendar', event.nativeEvent.data)
+              }
+              
+              if (event.nativeEvent.url.includes('assignment/my.json')){
+                collabData.set('Assignments', event.nativeEvent.data)
+              }
+
             }}
         />
 
