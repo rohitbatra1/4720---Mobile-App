@@ -37,28 +37,13 @@ function WebScreen({ navigation }) {
 
       
 
-      // const fetchAndLog = async () => {
+      const jsCode = "window.ReactNativeWebView.postMessage(document.documentElement.innerHTML)"
+      // const jsCode = "window.ReactNativeWebView.postMessage(window.document)"
 
-      //   // await CookieManager.clearAll()
 
-      //   const cookie = {'JSESSIONID':'2fd53c58-4fd9-4b43-beb6-33b813eceae9.collab-prod-blue.8.ut0wt3v5ejosma6db32mlegug'}
+      // const jsCode = "console.log(window.document)"
+      webview.injectJavaScript(jsCode)
 
-      //   const response = await fetch('https://collab.its.virginia.edu/direct/calendar/my.json', {
-
-      //     method: "GET",
-
-      //     credentials: "include",
-          
-
-          
-      //   });
-
-      //   const json = await response.json();
-      //   // just log ‘json’
-      //   console.log(json["calendar_collection"]);
-      // }
-    
-      // fetchAndLog();
 
       // navigation.navigate('Home', {
       //   itemId: 53,
@@ -75,10 +60,11 @@ function WebScreen({ navigation }) {
             source={{ uri: 'https://collab.its.virginia.edu/portal/login?containerLogin=true' }}
             onNavigationStateChange={handleWebViewNavigationStateChange}
             // injectedJavaScript={'window.ReactNativeWebView.postMessage(fetch("https://collab.its.virginia.edu/direct/calendar/my.json"));'}
-            // onMessage={(event) => {
-            //   console.log(event.nativeEvent.data);
-            //   alert(event.nativeEvent.data);
-            // }}
+            onMessage={(event) => {
+              console.log("hello")
+              console.log(event);
+              console.log(event.nativeEvent.data)
+            }}
         />
 
         
