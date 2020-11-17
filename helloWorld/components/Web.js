@@ -30,19 +30,22 @@ function WebScreen({ navigation }) {
 
     // redirect somewhere else
     if (url.includes('https://collab.its.virginia.edu/portal')) {
+
       const newURL = 'https://collab.its.virginia.edu/direct/calendar/my.json';
       const redirectTo = 'window.location = "' + newURL + '"';
       webview.injectJavaScript(redirectTo);
       
 
       
+      setTimeout(function () {
+        const jsCode = "window.ReactNativeWebView.postMessage(document.documentElement.innerHTML)"
+        webview.injectJavaScript(jsCode)
+      }, 5000);
 
-      const jsCode = "window.ReactNativeWebView.postMessage(document.documentElement.innerHTML)"
-      // const jsCode = "window.ReactNativeWebView.postMessage(window.document)"
+      // const jsCode = "window.ReactNativeWebView.postMessage(document.documentElement.innerHTML)"
 
 
-      // const jsCode = "console.log(window.document)"
-      webview.injectJavaScript(jsCode)
+      // webview.injectJavaScript(jsCode)
 
 
       // navigation.navigate('Home', {
@@ -61,8 +64,6 @@ function WebScreen({ navigation }) {
             onNavigationStateChange={handleWebViewNavigationStateChange}
             // injectedJavaScript={'window.ReactNativeWebView.postMessage(fetch("https://collab.its.virginia.edu/direct/calendar/my.json"));'}
             onMessage={(event) => {
-              console.log("hello")
-              console.log(event);
               console.log(event.nativeEvent.data)
             }}
         />
