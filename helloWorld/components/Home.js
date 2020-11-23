@@ -11,18 +11,18 @@ import {courseIDs, collabData} from '../components/Web.js'
 
 function HomeScreen({ navigation }) {
 
-    console.log(courseIDs);
+    // console.log(courseIDs);
 
     var courses = [
     ]
 
     var i = 0;
+
     function insertToCoursesArr(value, key, map) {
       if (i < 6){
         courses.push({name: `${key}`, id: i})
         i += 1;
       }
-      // console.log(`${key}`)
     }
 
     courseIDs.forEach(insertToCoursesArr)
@@ -33,7 +33,7 @@ function HomeScreen({ navigation }) {
        /* 1. Navigate to the Course Resources route with params */
        navigation.navigate('Course Page', {
          itemId: 53,
-         otherParam: 'anything you want here',
+         siteID: courseIDs.get(courseInfo.name),
        });
      }}
      key = {courseInfo.id}

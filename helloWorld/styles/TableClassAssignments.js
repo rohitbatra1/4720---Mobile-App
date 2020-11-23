@@ -3,17 +3,31 @@ import React, { Component } from 'react';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 
+
+import {assignmentToPass} from '../components/Assignments.js'
+
+
 class TableClassAssignments extends Component {
    constructor(props) {
      super(props);
+
+     var tabData = []
+
+     for (var index in assignmentToPass){
+       var curAssignmentData = [assignmentToPass[index].title, assignmentToPass[index].openTimeString, assignmentToPass[index].dueTimeString]
+       tabData.push(curAssignmentData)
+     }
+
+
      this.state = {
-       tableHead: ['Title', 'Status', 'Open', 'Due'],
-       tableData: [
-         ['PA 1', 'Returned', 'Oct 12, 2020 3:00 pm', 'Oct 14, 2020 3:00 pm'],
-         ['PA 2', 'Returned', 'Oct 16, 2020 3:00 pm', 'Oct 18, 2020 3:00 pm'],
-         ['PA 3', 'Not Started', 'Oct 19, 2020 3:00 pm', 'Oct 21, 2020 3:00 pm'],
-         ['PA 4', 'Not Started', 'Oct 27, 2020 3:00 pm', 'Oct 29, 2020 3:00 pm']
-       ]
+       tableHead: ['Title', 'Open', 'Due'],
+       tableData: tabData
+      //  tableData: [
+      //    [assignmentToPass[0].title, 'Returned', 'Oct 12, 2020 3:00 pm', 'Oct 14, 2020 3:00 pm'],
+      //    ['PA 2', 'Returned', 'Oct 16, 2020 3:00 pm', 'Oct 18, 2020 3:00 pm'],
+      //    ['PA 3', 'Not Started', 'Oct 19, 2020 3:00 pm', 'Oct 21, 2020 3:00 pm'],
+      //    ['PA 4', 'Not Started', 'Oct 27, 2020 3:00 pm', 'Oct 29, 2020 3:00 pm']
+      //  ]
      }
    }
  
