@@ -7,14 +7,26 @@ import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 
 import { styles, TableClassAssignments } from '../index.js';
 
+
+var assignmentToPass;
+
 function AssignmentsScreen({ route, navigation }) {
    /* 2. Get the param */
-   const { itemId , otherParam} = route.params;
+
+  
+   const { itemId , assignments} = route.params;
+
+   assignmentToPass = assignments
+
+   console.log(assignments);
+
    return (
  
      <TableClassAssignments />
  
    );
  }
+
+ export {assignmentToPass}
 
  export default AssignmentsScreen;

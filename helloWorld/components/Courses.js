@@ -7,7 +7,21 @@ import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 
 import {styles} from '../index.js';
 
-function courseScreen({ navigation }) {
+import {courseIDs, collabData} from '../components/Web.js'
+
+function courseScreen({ route, navigation }) {
+
+  // the site id of each specific course page passed to the current screen
+  const { itemId, siteID } = route.params;
+
+  
+  var curCourseAssignments = []
+  // gather the assignments specific to this course
+  for (var index in collabData.get("Assignments")['assignment_collection']){
+    if (collabData.get("Assignments")['assignment_collection'][index].context == siteID){
+      curCourseAssignments.push(collabData.get("Assignments")['assignment_collection'][index])
+    }
+  }
   
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -24,6 +38,7 @@ function courseScreen({ navigation }) {
           <Image style={styles.CalendarImageStyle} source={require('./AppImages/calendar.png')} />
 
         <Text style = {[styles.buttonText, styles.bottom]}>Course Calendar</Text>
+
       </TouchableOpacity>
 
 
@@ -49,7 +64,7 @@ function courseScreen({ navigation }) {
           /* 1. Navigate to the Course Resources route with params */
           navigation.navigate('View Assignments', {
             itemId: 53,
-            otherParam: 'anything you want here',
+            assignments: curCourseAssignments,
           });
         }}
         style={styles.assignmentsContainer}

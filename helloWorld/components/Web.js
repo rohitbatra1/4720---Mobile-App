@@ -18,9 +18,6 @@ function WebScreen({ navigation }) {
  
   var webview = null;
 
-  // let collabData = new Map()
-
-  // let courseIDs = new Map()
   
   var handleWebViewNavigationStateChange = newNavState => {
     // newNavState looks something like this:
@@ -105,11 +102,23 @@ function WebScreen({ navigation }) {
               }
 
               else if (event.nativeEvent.url.includes('calendar/my.json')){
-                collabData.set('Calendar', event.nativeEvent.data)
+                // console.log(event.nativeEvent.data);
+                
+
+                var calendarJSON = event.nativeEvent.data.slice(event.nativeEvent.data.indexOf("{"), event.nativeEvent.data.lastIndexOf("}") + 1);
+                
+                var calendarObject = JSON.parse(calendarJSON)
+                
+                collabData.set('Calendar', calendarObject);
               }
               
               else if (event.nativeEvent.url.includes('assignment/my.json')){
-                collabData.set('Assignments', event.nativeEvent.data)
+
+                var assignmentsJSON = event.nativeEvent.data.slice(event.nativeEvent.data.indexOf("{"), event.nativeEvent.data.lastIndexOf("}") + 1);
+
+                var assignmentsObject = JSON.parse(assignmentsJSON);
+                
+                collabData.set('Assignments', assignmentsObject)
               }
               
               else{
