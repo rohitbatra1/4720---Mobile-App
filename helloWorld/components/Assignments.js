@@ -18,7 +18,7 @@ function AssignmentsScreen({ route, navigation }) {
 
    assignmentToPass = assignments
 
-   console.log(assignments);
+  //  console.log(assignments);
 
    return (
  

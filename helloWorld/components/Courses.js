@@ -22,6 +22,18 @@ function courseScreen({ route, navigation }) {
       curCourseAssignments.push(collabData.get("Assignments")['assignment_collection'][index])
     }
   }
+
+  var curCourseAnnouncements = []
+
+  for (var index in collabData.get("Announcements")['announcement_collection']){
+    if (collabData.get("Announcements")['announcement_collection'][index].siteId == siteID){
+      curCourseAnnouncements.push(collabData.get("Announcements")['announcement_collection'][index])
+    }
+  }
+
+  
+
+
   
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -95,7 +107,7 @@ function courseScreen({ route, navigation }) {
       <TouchableOpacity onPress={() => {
           /* 1. Navigate to the Course Resources route with params */
           navigation.navigate('Announcements', {
-            otherParam: 'anything you want here',
+            announcements: curCourseAnnouncements,
           });
         }}
         style={styles.announcementsContainer}
