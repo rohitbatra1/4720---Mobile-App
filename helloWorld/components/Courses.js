@@ -12,7 +12,7 @@ import {courseIDs, collabData} from '../components/Web.js'
 function courseScreen({ route, navigation }) {
 
   // the site id of each specific course page passed to the current screen
-  const { itemId, siteID } = route.params;
+  const {siteID } = route.params;
 
   
   var curCourseAssignments = []
@@ -29,7 +29,6 @@ function courseScreen({ route, navigation }) {
       <TouchableOpacity onPress={() => {
           /* 1. Navigate to the Course Resources route with params */
           navigation.navigate('Course Calendar', {
-            itemId: 53,
             otherParam: 'anything you want here',
           });
         }}
@@ -46,7 +45,6 @@ function courseScreen({ route, navigation }) {
       <TouchableOpacity onPress={() => {
           /* 1. Navigate to the Course Resources route with params */
           navigation.navigate('Course Resources', {
-            itemId: 53,
             otherParam: 'anything you want here',
           });
         }}
@@ -63,7 +61,6 @@ function courseScreen({ route, navigation }) {
       <TouchableOpacity onPress={() => {
           /* 1. Navigate to the Course Resources route with params */
           navigation.navigate('View Assignments', {
-            itemId: 53,
             assignments: curCourseAssignments,
           });
         }}
@@ -82,7 +79,6 @@ function courseScreen({ route, navigation }) {
       <TouchableOpacity onPress={() => {
           /* 1. Navigate to the Course Resources route with params */
           navigation.navigate('Syllabus', {
-            itemId: 53,
             otherParam: 'anything you want here',
           });
         }}
@@ -99,7 +95,6 @@ function courseScreen({ route, navigation }) {
       <TouchableOpacity onPress={() => {
           /* 1. Navigate to the Course Resources route with params */
           navigation.navigate('Announcements', {
-            itemId: 53,
             otherParam: 'anything you want here',
           });
         }}

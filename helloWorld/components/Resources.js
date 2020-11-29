@@ -9,7 +9,7 @@ import {styles} from '../index.js';
 
 function ResourcesScreen({ route, navigation}) {
    /* 2. Get the param */
-   const { itemId , otherParam} = route.params;
+   const {otherParam} = route.params;
    var resources = [
      {name: 'Folder Name', type: 'Folder', id: 0}, 
      {name: 'Folder Name', type: 'Folder', id: 1},
@@ -32,7 +32,6 @@ function ResourcesScreen({ route, navigation}) {
    var resourcesMap = resources.map(resourcesInfo => 
    <TouchableOpacity onPress={() => {
        navigation.navigate(resourcesInfo.type, {
-         itemId: 53,
          otherParam: 'anything you want here',
        });
      }}

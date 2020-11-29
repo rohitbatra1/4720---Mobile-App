@@ -16,7 +16,6 @@ function LoginScreen({ navigation }) {
         <TouchableOpacity onPress={() => {
             /* 1. Navigate to the Course Resources route with params */
             navigation.navigate('Web', {
-              itemId: 53,
               otherParam: 'anything you want here',
             });
           }}

@@ -9,7 +9,8 @@ import { styles, TableClassAnnouncements } from '../index.js';
 
 function AnnouncementsScreen({ route, navigation }) {
    /* 2. Get the param */
-   const { itemId , otherParam} = route.params;
+   const {otherParam} = route.params;
+   
    return (
      
      <TableClassAnnouncements />
