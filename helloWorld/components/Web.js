@@ -36,9 +36,11 @@ function WebScreen({ navigation }) {
     if (url == ('https://collab.its.virginia.edu/portal/') || url == 'https://collab.its.virginia.edu/portal?containerLogin=true') {
 
       // gather the course IDS's from the home page
-
+      
+      var jsCode;
+      
       setTimeout(function () {
-        let jsCode = "window.ReactNativeWebView.postMessage(document.getElementById('topnav').innerHTML)"
+        jsCode = "window.ReactNativeWebView.postMessage(document.getElementById('topnav').innerHTML)"
         webview.injectJavaScript(jsCode)
       }, 5000);
 
@@ -63,7 +65,7 @@ function WebScreen({ navigation }) {
 
 
       setTimeout(function () {
-        const jsCode = "window.ReactNativeWebView.postMessage(document.documentElement.innerHTML)"
+        jsCode = "window.ReactNativeWebView.postMessage(document.documentElement.innerHTML)"
         webview.injectJavaScript(jsCode)
       }, 25000);
 
@@ -79,7 +81,6 @@ function WebScreen({ navigation }) {
         // console.log(collabData);
 
         navigation.navigate('Home', {
-          itemId: 53,
           otherParam: 'anything you want here',
         })
       }, 30000);
@@ -123,7 +124,7 @@ function WebScreen({ navigation }) {
               
               else{
 
-                dataArray = event.nativeEvent.data.split("=");
+                var dataArray = event.nativeEvent.data.split("=");
 
                 var i;
                 for (i = 0; i < dataArray.length; i++) {

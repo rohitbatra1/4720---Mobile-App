@@ -10,7 +10,7 @@ import PDFReader from 'rn-pdf-reader-js';
 
 function SyllabusScreen({ route, navigation }) {
    /* 2. Get the param */
-   const { itemId , otherParam} = route.params;
+   const {otherParam} = route.params;
    return (
       <PDFReader source={{uri: 'http://samples.leanpub.com/thereactnativebook-sample.pdf',}} />
    );

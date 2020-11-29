@@ -11,7 +11,7 @@ import {styles} from '../index.js';
 
 function CalendarScreen({ route, navigation }) {
    /* 2. Get the param */
-   const { itemId , otherParam} = route.params;
+   const { otherParam} = route.params;
    return (
     <Agenda/>
    );

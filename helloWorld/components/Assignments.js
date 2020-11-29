@@ -14,7 +14,7 @@ function AssignmentsScreen({ route, navigation }) {
    /* 2. Get the param */
 
   
-   const { itemId , assignments} = route.params;
+   const {assignments} = route.params;
 
    assignmentToPass = assignments
 

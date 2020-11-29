@@ -20,7 +20,7 @@ function HomeScreen({ navigation }) {
 
     function insertToCoursesArr(value, key, map) {
       if (i < 6){
-        courses.push({name: `${key}`, id: i})
+        courses.push({name: `${key}`, id: i, siteID: `${value}`})
         i += 1;
       }
     }
@@ -32,8 +32,8 @@ function HomeScreen({ navigation }) {
      <TouchableOpacity onPress={() => {
        /* 1. Navigate to the Course Resources route with params */
        navigation.navigate('Course Page', {
-         itemId: 53,
-         siteID: courseIDs.get(courseInfo.name),
+         name: courseInfo.name,
+         siteID: courseInfo.siteID,
        });
      }}
      key = {courseInfo.id}
@@ -55,7 +55,6 @@ function HomeScreen({ navigation }) {
        <TouchableOpacity onPress={() => {
            /* 1. Navigate to the Course Resources route with params */
            navigation.navigate('General Calendar', {
-             itemId: 53,
              otherParam: 'anything you want here',
            });
          }}
