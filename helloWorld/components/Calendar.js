@@ -9,12 +9,22 @@ import Agenda from '../components/Agenda';
 
 import {styles} from '../index.js';
 
+var calendarPass
+
 function CalendarScreen({ route, navigation }) {
    /* 2. Get the param */
-   const { otherParam} = route.params;
+
+   const {calendarEvents} = route.params;
+  
+   calendarPass = calendarEvents;
+
+  //  console.log(calendarPass[0].siteId)
+
    return (
     <Agenda/>
    );
  }
+ 
+ export {calendarPass}
 
  export default CalendarScreen;
