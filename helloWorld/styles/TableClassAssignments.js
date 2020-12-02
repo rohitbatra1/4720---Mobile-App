@@ -14,20 +14,19 @@ class TableClassAssignments extends Component {
      var tabData = []
 
      for (var index in assignmentToPass){
+      //  14341000 time to subtract to correct time difference
        var curAssignmentData = [assignmentToPass[index].title, assignmentToPass[index].openTimeString, new Date(assignmentToPass[index].dueTime.time).toISOString().split('T')[0]]
        tabData.push(curAssignmentData)
      }
 
-    //  timeToString(time) {
-    //   var date = new Date(time);
-    //   // date = date.getDate() - 1
-    //   return date.toISOString().split('T')[0];
-    // };
+     tabData.sort(function(a, b) {
+      return (a[2] < b[2]) ? -1 : ((a[2] > b[2]) ? 1 : 0);
+    });
 
 
      this.state = {
        tableHead: ['Title', 'Open', 'Due'],
-       tableData: sortedTabData
+       tableData: tabData
       //  tableData: [
       //    [assignmentToPass[0].title, 'Returned', 'Oct 12, 2020 3:00 pm', 'Oct 14, 2020 3:00 pm'],
       //    ['PA 2', 'Returned', 'Oct 16, 2020 3:00 pm', 'Oct 18, 2020 3:00 pm'],
