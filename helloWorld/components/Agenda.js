@@ -43,9 +43,9 @@ export default class AgendaScreen extends Component {
   }
 
   loadItems(day) {
-    setTimeout(() => {
+    // setTimeout(() => {
       for (var index in calendarPass){
-        var epochTime = calendarPass[index]['firstTime']['time'] - 18000;
+        var epochTime = calendarPass[index]['firstTime']['time'];
         // console.log(epochTime);
         // console.log(this.timeToString(epochTime))
         var strTime = this.timeToString(epochTime)
@@ -53,34 +53,31 @@ export default class AgendaScreen extends Component {
         const numItems = 1;
         this.state.items[strTime].push({
                   name: calendarPass[index]['entityTitle'],
-                  height: Math.max(50, Math.floor(Math.random() * 150))
+                  height: Math.max(50, Math.floor(0.45 * 150))
         });
 
-
-        // var calendarPass = [assignmentToPass[index].title, assignmentToPass[index].openTimeString, assignmentToPass[index].dueTimeString]
-        // tabData.push(curAssignmentData)
       }
-      // for (let i = -15; i < 85; i++) {
-      //   const time = day.timestamp + i * 24 * 60 * 60 * 1000;
-      //   const strTime = this.timeToString(time);
-      //   if (!this.state.items[strTime]) {
-      //     this.state.items[strTime] = [];
-      //     const numItems = 1;
-      //     for (let j = 0; j < numItems; j++) {
-      //       this.state.items[strTime].push({
-      //         name: calendarPass[0].siteId,
-      //         height: Math.max(50, Math.floor(Math.random() * 150))
-      //       });
-      //     }
-      //   }
-      // }
+      for (let i = -15; i < 85; i++) {
+        const time = day.timestamp + i * 24 * 60 * 60 * 1000;
+        const strTime = this.timeToString(time);
+        if (!this.state.items[strTime]) {
+          this.state.items[strTime] = [];
+          const numItems = 1;
+          for (let j = 0; j < numItems; j++) {
+            // this.state.items[strTime].push({
+            //   name: 'empty',
+            //   height: Math.max(50, Math.floor(Math.random() * 150))
+            // });
+          }
+        }
+      }
       //console.log(this.state.items);
       const newItems = {};
       Object.keys(this.state.items).forEach(key => {newItems[key] = this.state.items[key];});
       this.setState({
         items: newItems
       });
-    }, 1000);
+    // }, 1000);
     // console.log(`Load Items for ${day.year}-${day.month}`);
   }
 
@@ -92,7 +89,7 @@ export default class AgendaScreen extends Component {
 
   renderEmptyDate() {
     return (
-      <View style={style.emptyDate}><Text>This is empty date!</Text></View>
+      <View style={style.emptyDate}><Text></Text></View>
     );
   }
 
@@ -101,7 +98,8 @@ export default class AgendaScreen extends Component {
   }
 
   timeToString(time) {
-    const date = new Date(time);
+    var date = new Date(time);
+    // date = date.getDate() - 1
     return date.toISOString().split('T')[0];
   }
 }
