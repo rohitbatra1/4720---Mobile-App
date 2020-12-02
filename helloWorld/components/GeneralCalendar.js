@@ -5,13 +5,19 @@ import { Image, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 
-import Agenda from '../components/Agenda';
+import Agenda from '../components/GenAgenda';
 
 import {styles} from '../index.js';
+
+import {courseIDs, collabData} from '../components/Web.js'
+
 
 function generalCalendarScreen({ route, navigation }) {
    /* 2. Get the param */
    const {otherParam} = route.params;
+
+  //  var allCalendarEvents = collabData.get('Calendar')['calendar_collection']
+   console.log(courseIDs)
   
    return (
     <Agenda/>
