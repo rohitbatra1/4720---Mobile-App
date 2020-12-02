@@ -12,7 +12,7 @@ import {courseIDs, collabData} from '../components/Web.js'
 function courseScreen({ route, navigation }) {
 
   // the site id of each specific course page passed to the current screen
-  const {siteID } = route.params;
+  const {siteID} = route.params;
 
   
   var curCourseAssignments = []
@@ -31,6 +31,16 @@ function courseScreen({ route, navigation }) {
     }
   }
 
+  var curCourseCalendarEvents = []
+
+  for (var index in collabData.get("Calendar")['calendar_collection']){
+    if (collabData.get("Calendar")['calendar_collection'][index].siteId == siteID){
+      curCourseCalendarEvents.push(collabData.get("Calendar")['calendar_collection'][index])
+    }
+  }
+
+
+
   
 
 
@@ -41,7 +51,7 @@ function courseScreen({ route, navigation }) {
       <TouchableOpacity onPress={() => {
           /* 1. Navigate to the Course Resources route with params */
           navigation.navigate('Course Calendar', {
-            otherParam: 'anything you want here',
+            calendarEvents: curCourseCalendarEvents,
           });
         }}
         style={styles.CalendarContainer}

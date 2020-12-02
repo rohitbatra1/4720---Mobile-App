@@ -6,6 +6,9 @@ import {
 } from 'react-native';
 import {Agenda} from 'react-native-calendars';
 
+import {calendarPass} from '../components/Calendar.js'
+
+
 export default class AgendaScreen extends Component {
   constructor(props) {
     super(props);
@@ -49,7 +52,7 @@ export default class AgendaScreen extends Component {
           const numItems = 1;
           for (let j = 0; j < numItems; j++) {
             this.state.items[strTime].push({
-              name: 'Item for ' + strTime,
+              name: calendarPass[0].siteId,
               height: Math.max(50, Math.floor(Math.random() * 150))
             });
           }
