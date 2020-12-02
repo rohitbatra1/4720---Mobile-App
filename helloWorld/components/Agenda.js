@@ -44,20 +44,36 @@ export default class AgendaScreen extends Component {
 
   loadItems(day) {
     setTimeout(() => {
-      for (let i = -15; i < 85; i++) {
-        const time = day.timestamp + i * 24 * 60 * 60 * 1000;
-        const strTime = this.timeToString(time);
-        if (!this.state.items[strTime]) {
-          this.state.items[strTime] = [];
-          const numItems = 1;
-          for (let j = 0; j < numItems; j++) {
-            this.state.items[strTime].push({
-              name: calendarPass[0].siteId,
-              height: Math.max(50, Math.floor(Math.random() * 150))
-            });
-          }
-        }
+      for (var index in calendarPass){
+        var epochTime = calendarPass[index]['firstTime']['time'] - 18000;
+        // console.log(epochTime);
+        // console.log(this.timeToString(epochTime))
+        var strTime = this.timeToString(epochTime)
+        this.state.items[strTime] = [];
+        const numItems = 1;
+        this.state.items[strTime].push({
+                  name: calendarPass[index]['entityTitle'],
+                  height: Math.max(50, Math.floor(Math.random() * 150))
+        });
+
+
+        // var calendarPass = [assignmentToPass[index].title, assignmentToPass[index].openTimeString, assignmentToPass[index].dueTimeString]
+        // tabData.push(curAssignmentData)
       }
+      // for (let i = -15; i < 85; i++) {
+      //   const time = day.timestamp + i * 24 * 60 * 60 * 1000;
+      //   const strTime = this.timeToString(time);
+      //   if (!this.state.items[strTime]) {
+      //     this.state.items[strTime] = [];
+      //     const numItems = 1;
+      //     for (let j = 0; j < numItems; j++) {
+      //       this.state.items[strTime].push({
+      //         name: calendarPass[0].siteId,
+      //         height: Math.max(50, Math.floor(Math.random() * 150))
+      //       });
+      //     }
+      //   }
+      // }
       //console.log(this.state.items);
       const newItems = {};
       Object.keys(this.state.items).forEach(key => {newItems[key] = this.state.items[key];});
