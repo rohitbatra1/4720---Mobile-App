@@ -14,8 +14,14 @@ class TableClassAnnouncements extends Component {
      var tabData = []
 
      for (var index in announcementsToPass){
-      
-       var curAnnouncementData = [announcementsToPass[index].entityTitle, announcementsToPass[index].createdByDisplayName, announcementsToPass[index].body]
+
+      // var div = document.createElement("div");
+      // div.innerHTML = announcementsToPass[index].body;
+      // var text = div.textContent || div.innerText || "";
+      var messageBody = announcementsToPass[index].body;
+      // messageBody = messageBody.replace( /(&lt([^&gt]+)&gt)/ig, '');
+      // messageBody = messageBody.replaceAll(';', '');
+       var curAnnouncementData = [announcementsToPass[index].entityTitle, announcementsToPass[index].createdByDisplayName, messageBody]
        tabData.push(curAnnouncementData)
      }
 
