@@ -7,9 +7,14 @@ import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 
 import { styles, TableClassAnnouncements } from '../index.js';
 
+
+var announcementsToPass;
+
 function AnnouncementsScreen({ route, navigation }) {
    /* 2. Get the param */
-   const {otherParam} = route.params;
+   const {announcements} = route.params;
+
+   announcementsToPass = announcements
    
    return (
      
@@ -18,4 +23,6 @@ function AnnouncementsScreen({ route, navigation }) {
    );
  }
 
+ export {announcementsToPass}
+ 
  export default AnnouncementsScreen;

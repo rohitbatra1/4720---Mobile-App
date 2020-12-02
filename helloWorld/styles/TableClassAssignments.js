@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, ScrollView } from 'react-native';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 
 
@@ -46,7 +46,7 @@ class TableClassAssignments extends Component {
      );
  
      return (
-       <View style={tableStyles.container}>
+       <ScrollView style={tableStyles.container}>
          <Table borderStyle={{borderColor: 'transparent'}}>
            <Row data={state.tableHead} style={tableStyles.head} textStyle={tableStyles.text}/>
            {
@@ -61,7 +61,7 @@ class TableClassAssignments extends Component {
              ))
            }
          </Table>
-       </View>
+       </ScrollView>
      )
    }
  }

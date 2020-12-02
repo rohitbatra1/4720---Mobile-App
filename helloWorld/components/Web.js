@@ -69,6 +69,18 @@ function WebScreen({ navigation }) {
         webview.injectJavaScript(jsCode)
       }, 25000);
 
+      setTimeout(function () {
+        newURL = 'https://collab.its.virginia.edu/direct/announcement/user.json?n=2000&d=365';
+        redirectTo = 'window.location = "' + newURL + '"';
+        webview.injectJavaScript(redirectTo);
+      }, 30000);
+
+
+      setTimeout(function () {
+        jsCode = "window.ReactNativeWebView.postMessage(document.documentElement.innerHTML)"
+        webview.injectJavaScript(jsCode)
+      }, 35000);
+
       
       // navigation.navigate('Home', {
       //   itemId: 53,
@@ -83,7 +95,7 @@ function WebScreen({ navigation }) {
         navigation.navigate('Home', {
           otherParam: 'anything you want here',
         })
-      }, 30000);
+      }, 40000);
 
     }
   };
@@ -120,6 +132,15 @@ function WebScreen({ navigation }) {
                 var assignmentsObject = JSON.parse(assignmentsJSON);
                 
                 collabData.set('Assignments', assignmentsObject)
+              }
+              else if (event.nativeEvent.url.includes('announcement/user')) {
+
+                var announcementsJSON = event.nativeEvent.data.slice(event.nativeEvent.data.indexOf("{"), event.nativeEvent.data.lastIndexOf("}") + 1);
+
+                var announcementsObject = JSON.parse(announcementsJSON);
+                
+                collabData.set('Announcements', announcementsObject)
+
               }
               
               else{

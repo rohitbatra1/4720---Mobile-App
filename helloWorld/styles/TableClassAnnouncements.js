@@ -1,19 +1,33 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, ScrollView } from 'react-native';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
+
+
+import {announcementsToPass} from '../components/Announcements.js'
 
 class TableClassAnnouncements extends Component {
    constructor(props) {
      super(props);
+
+
+     var tabData = []
+
+     for (var index in announcementsToPass){
+      
+       var curAnnouncementData = [announcementsToPass[index].entityTitle, announcementsToPass[index].createdByDisplayName, announcementsToPass[index].body]
+       tabData.push(curAnnouncementData)
+     }
+
      this.state = {
-       tableHead: ['Title', 'Date'],
-       tableData: [
-         ['Welcome!', 'Oct 14, 2020 3:00 pm'],
-         ['PA 2 Due', 'Oct 18, 2020 3:00 pm'],
-         ['PA 3 Due', 'Oct 21, 2020 3:00 pm'],
-         ['PA 4 Due', 'Oct 29, 2020 3:00 pm']
-       ]
+       tableHead: ['Title', 'Author', 'Message'],
+       tableData: tabData
+      //  tableData: [
+      //    ['Welcome!', 'Oct 14, 2020 3:00 pm'],
+      //    ['PA 2 Due', 'Oct 18, 2020 3:00 pm'],
+      //    ['PA 3 Due', 'Oct 21, 2020 3:00 pm'],
+      //    ['PA 4 Due', 'Oct 29, 2020 3:00 pm']
+      //  ]
      }
    }
  
@@ -32,7 +46,7 @@ class TableClassAnnouncements extends Component {
      );
  
      return (
-       <View style={tableStyles.container}>
+       <ScrollView style={tableStyles.container}>
          <Table borderStyle={{borderColor: 'transparent'}}>
            <Row data={state.tableHead} style={tableStyles.head} textStyle={tableStyles.text}/>
            {
@@ -47,7 +61,7 @@ class TableClassAnnouncements extends Component {
              ))
            }
          </Table>
-       </View>
+       </ScrollView>
      )
    }
  }
