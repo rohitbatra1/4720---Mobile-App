@@ -15,7 +15,7 @@ class TableClassAssignments extends Component {
 
      for (var index in assignmentToPass){
       //  14341000 time to subtract to correct time difference
-       var curAssignmentData = [assignmentToPass[index].title, assignmentToPass[index].openTimeString, new Date(assignmentToPass[index].dueTime.time).toISOString().split('T')[0]]
+       var curAssignmentData = [assignmentToPass[index].title, assignmentToPass[index].openTimeString, new Date(assignmentToPass[index].dueTime.time - 14341000).toISOString().split('T')[0]]
        tabData.push(curAssignmentData)
      }
 

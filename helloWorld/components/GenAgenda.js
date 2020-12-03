@@ -54,7 +54,7 @@ export default class AgendaScreen extends Component {
         if (values.includes(calendarEvents[index]['siteId'])){
 
 
-            var epochTime = calendarEvents[index]['firstTime']['time'];
+            var epochTime = calendarEvents[index]['firstTime']['time'] - 14341000;
             // console.log(epochTime);
             // console.log(this.timeToString(epochTime))
             var strTime = this.timeToString(epochTime)
