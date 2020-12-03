@@ -64,19 +64,7 @@ function courseScreen({ route, navigation }) {
 
 
 
-      <TouchableOpacity onPress={() => {
-          /* 1. Navigate to the Course Resources route with params */
-          navigation.navigate('Course Resources', {
-            otherParam: 'anything you want here',
-          });
-        }}
-        style={styles.resourcesContainer}
-        >
-
-          <Image style={styles.CalendarImageStyle} source={require('./AppImages/resources.png')} />  
-       
-        <Text style = {[styles.buttonText, styles.bottom]}>Course Resources</Text>
-      </TouchableOpacity>
+      
 
 
 
@@ -106,9 +94,9 @@ function courseScreen({ route, navigation }) {
         }}
         style={styles.syllabusContainer}
         >
-          <Image style={styles.syllabusimageStyle} source={require('./AppImages/syllabus.png')} /> 
+          <Image style={styles.CalendarImageStyle} source={require('./AppImages/syllabus.png')} /> 
 
-        <Text style = {[styles.syllabusbuttonText, styles.bottom]}>Syllabus</Text>
+        <Text style = {[styles.buttonText, styles.bottom]}>Syllabus</Text>
       </TouchableOpacity>
 
 
@@ -122,9 +110,9 @@ function courseScreen({ route, navigation }) {
         }}
         style={styles.announcementsContainer}
         >
-          <Image style={styles.AnnouncementImageStyle} source={require('./AppImages/announcement.png')} /> 
+          <Image style={styles.CalendarImageStyle} source={require('./AppImages/announcement.png')} /> 
 
-      <Text style = {[styles.announcementsbuttonText, styles.bottom]}>Announcements</Text>
+      <Text style = {[styles.buttonText, styles.bottom]}>Announcements</Text>
       </TouchableOpacity>
 
 

@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
      height: '18%',
      width: '85%',
      position: 'absolute',
-     top:'45%',
+     top:'23%',
    },
  
    syllabusContainer: {
@@ -158,10 +158,9 @@ const styles = StyleSheet.create({
      paddingVertical: 10,
      paddingHorizontal: 12,
      height: '18%',
-     width: '33%',
+     width: '85%',
      position: 'absolute',
-     top:'67%',
-     left: '7%',
+     top:'45%',
    },
  
    announcementsContainer: {
@@ -172,10 +171,9 @@ const styles = StyleSheet.create({
      paddingVertical: 10,
      paddingHorizontal: 12,
      height: '18%',
-     width: '43%',
+     width: '85%',
      position: 'absolute',
      top:'67%',
-     right: '7%',
    },
    
    buttonText: {
@@ -190,10 +188,11 @@ const styles = StyleSheet.create({
    },
 
   coursebuttonText: {
-    fontSize: 18,
+    fontSize: 15,
     color: "#15A4FE",
     fontWeight: "bold",
-    alignSelf: "center",
+    alignSelf: "stretch",
+    textAlign: 'center',
     textTransform: "uppercase",
     position: 'absolute',
     bottom: '20%',
