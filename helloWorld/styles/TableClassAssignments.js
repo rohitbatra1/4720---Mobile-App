@@ -15,12 +15,17 @@ class TableClassAssignments extends Component {
 
      for (var index in assignmentToPass){
       //  14341000 time to subtract to correct time difference
-       var curAssignmentData = [assignmentToPass[index].title, assignmentToPass[index].openTimeString, new Date(assignmentToPass[index].dueTime.time - 14341000).toISOString().split('T')[0]]
+      // new Date(assignmentToPass[index].dueTime.time - 14341000).toISOString().split('T')[0]
+       var curAssignmentData = [assignmentToPass[index].title, assignmentToPass[index].openTimeString, assignmentToPass[index].dueTimeString]
        tabData.push(curAssignmentData)
      }
 
      tabData.sort(function(a, b) {
-      return (a[2] < b[2]) ? -1 : ((a[2] > b[2]) ? 1 : 0);
+
+      var x = new Date(a[2]).toISOString().split('T')[0]
+      var y = new Date(b[2]).toISOString().split('T')[0]
+
+      return (x < y) ? -1 : ((x > y) ? 1 : 0);
     });
 
 
