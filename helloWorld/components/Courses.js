@@ -89,7 +89,7 @@ function courseScreen({ route, navigation }) {
       <TouchableOpacity onPress={() => {
           /* 1. Navigate to the Course Resources route with params */
           navigation.navigate('Syllabus', {
-            otherParam: 'anything you want here',
+            courseID: siteID,
           });
         }}
         style={styles.syllabusContainer}
