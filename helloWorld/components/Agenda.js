@@ -45,7 +45,7 @@ export default class AgendaScreen extends Component {
   loadItems(day) {
     // setTimeout(() => {
       for (var index in calendarPass){
-        var epochTime = calendarPass[index]['firstTime']['time'];
+        var epochTime = calendarPass[index]['firstTime']['time'] - 14341000;
         // console.log(epochTime);
         // console.log(this.timeToString(epochTime))
         var strTime = this.timeToString(epochTime)
